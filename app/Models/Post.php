@@ -9,7 +9,12 @@ class Post extends Model
 {
     use HasFactory;
     
-    public function getpaginateByLimit(int $limit_count = 5)
+    protected $fillable = [
+    'title',
+    'body',
+    ];
+    
+    public function getpaginateByLimit(int $limit_count = 1)
     {
         return $this->orderby('updated_at', 'DESC')->paginate($limit_count);
     }
